@@ -1,4 +1,5 @@
 import unittest
+import xmlrunner
 from calculator.core import Calculator
 
 
@@ -42,3 +43,11 @@ class CalculatorTests(unittest.TestCase):
         result = calculator.Divide(operator1, operator2)
         # Assert
         self.assertEqual(expected, result, "divide method doesn't work!")        
+
+if __name__ == '__main__':
+        unittest.main(
+            testRunner=xmlrunner.XMLTestRunner(output='test-reports'),
+            failfast=False,
+            buffer=False,
+            catchbreak=False
+        )
