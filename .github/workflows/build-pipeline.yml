@@ -43,8 +43,15 @@ jobs:
         cd src
         python -m pip install --user --upgrade build
         python -m build
-    - name: Archive package
-      uses: actions/upload-artifact@v4
-      with:
-        name: awesome-calculator
-        path: src/dist    
+    # - name: Archive package
+    #  uses: actions/upload-artifact@v4
+    #  with:
+    #    name: awesome-calculator
+    #    path: src/dist    
+
+    - name: Publish Test Results Linux
+      uses: EnricoMi/publish-unit-test-result-action/linux@v2
+      if: (! cancelled() )
+      with: 
+          files: |
+             src/TEST*.xml
