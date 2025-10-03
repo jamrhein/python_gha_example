@@ -28,7 +28,8 @@ jobs:
       run: |
         cd src
         # python -m unittest -v
-        python tests/testscalculatortests.py 
+        # python tests/testscalculatortests.py 
+        python -m xmlrunner tests/testscalculatortests.py  
         coverage run -m unittest
         coverage report
         coverage html

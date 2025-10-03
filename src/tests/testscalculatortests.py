@@ -45,9 +45,14 @@ class CalculatorTests(unittest.TestCase):
         self.assertEqual(expected, result, "divide method doesn't work!")        
 
 if __name__ == '__main__':
-        unittest.main(
-            testRunner=xmlrunner.XMLTestRunner(output='test-reports'),
-            failfast=False,
-            buffer=False,
-            catchbreak=False
-        )
+    # The output directory for the XML reports
+    output_directory = 'test-reports'
+
+    # Create a test runner that saves the results to XML files
+    runner = xmlrunner.XMLTestRunner(output=output_directory)
+
+    # Discover tests in the 'calc2' package
+    test_suite = unittest.TestLoader().discover(start_dir='calculator')
+
+    # Run the tests with the XMLTestRunner
+    runner.run(test_suite)
